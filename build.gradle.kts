@@ -11,4 +11,11 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    testImplementation("io.kotest:kotest-runner-junit5:4.4.1")
+    testImplementation("io.kotest:kotest-assertions-core:4.4.1")
+    testImplementation ("io.kotest:kotest-property:4.4.1")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
