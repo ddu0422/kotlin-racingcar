@@ -2,12 +2,12 @@ package domain
 
 import domain.exception.InvalidCarNameException
 
-data class Car(
+public data class Car(
     val name: String,
     val position: Int,
 ) {
 
-    companion object {
+    private companion object {
         const val CAR_NAME_LENGTH_CONDITION = 5
     }
 

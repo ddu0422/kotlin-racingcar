@@ -16,6 +16,10 @@ dependencies {
     testImplementation ("io.kotest:kotest-property:4.4.1")
 }
 
+kotlin {
+    explicitApi()
+}
+
 tasks {
     test {
         useJUnitPlatform()
