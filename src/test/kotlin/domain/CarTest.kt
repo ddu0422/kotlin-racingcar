@@ -4,6 +4,7 @@ import domain.exception.InvalidCarNameException
 import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.inspectors.forAll
 import io.kotest.matchers.shouldBe
 
 class CarTest : StringSpec({
@@ -12,9 +13,11 @@ class CarTest : StringSpec({
     }
 
     "이름 길이가 5자 미만인 경우 자동차 객체를 생성 불가" {
-        shouldThrow<InvalidCarNameException> {
-            Car("mir1", 0)
-        }.message shouldBe "자동차 이름은 5자 이상이여야합니다."
+        listOf("", "a", "ab", "abc", "abcd", "abcd").forAll {
+            shouldThrow<InvalidCarNameException> {
+                Car(it, 0)
+            }.message shouldBe "자동차 이름은 5자 이상이여야합니다."
+        }
     }
 
     "이름 길이자 5자 이상인 경우 자동차 객체를 생성 가능" {
