@@ -30,4 +30,14 @@ class CarTest : StringSpec({
         car.name shouldBe correctName
         car.position shouldBe initialPosition
     }
+
+    "4 이상인 경우 자동차 이동 가능" {
+        val car = Car(correctName, initialPosition)
+        car.move(4) shouldBe Car(correctName, initialPosition + 1)
+    }
+
+    "3 이하인 경우 자동차 이동 불가" {
+        val car = Car(correctName, initialPosition)
+        car.move(3) shouldBe Car(correctName, initialPosition)
+    }
 })

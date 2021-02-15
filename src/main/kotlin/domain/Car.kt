@@ -20,4 +20,12 @@ public data class Car(
             throw InvalidCarNameException()
         }
     }
+
+    public fun move(value: Int): Car {
+        return if (value >= 4) {
+            Car(this.name, this.position + 1)
+        } else {
+            this
+        }
+    }
 }
