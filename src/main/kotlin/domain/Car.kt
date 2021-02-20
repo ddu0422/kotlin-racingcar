@@ -9,6 +9,8 @@ public data class Car(
 
     private companion object {
         const val CAR_NAME_LENGTH_CONDITION = 5
+        const val MOVE_CONDITION = 4
+        const val MOVE_POSITION = 1
     }
 
     init {
@@ -22,8 +24,8 @@ public data class Car(
     }
 
     public fun move(value: Int): Car {
-        return if (value >= 4) {
-            Car(this.name, this.position + 1)
+        return if (value >= MOVE_CONDITION) {
+            Car(this.name, this.position + MOVE_POSITION)
         } else {
             this
         }
