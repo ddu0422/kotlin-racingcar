@@ -19,7 +19,7 @@ public data class Car(
 
     private fun validName(name: String) {
         if (name.length < CAR_NAME_LENGTH_CONDITION) {
-            throw InvalidCarNameException()
+            throw InvalidCarNameException
         }
     }
 
