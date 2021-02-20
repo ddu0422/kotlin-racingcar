@@ -1,6 +1,7 @@
 package domain
 
 import domain.exception.InvalidCarNameException
+import domain.exception.InvalidCarPositionException
 import io.kotest.assertions.throwables.shouldNotThrowAny
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
@@ -29,6 +30,14 @@ class CarTest : StringSpec({
         }
         car.name shouldBe correctName
         car.position shouldBe initialPosition
+    }
+    
+    "현재 위치가 0보다 작은 경우 자동차 객체 생성 불가" {
+        listOf(-2, -1).forAll {
+            shouldThrow<InvalidCarPositionException> {
+                Car(correctName, it)
+            }.message shouldBe "자동차 위치는 0보다 작을 수 없습니다."
+        }
     }
 
     "4 이상인 경우 자동차 이동 가능" {
